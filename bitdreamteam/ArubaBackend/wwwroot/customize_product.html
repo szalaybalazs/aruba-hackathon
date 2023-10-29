@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebY Home</title>
+  <meta name="description"
+    content="Find and get your own website on our marketplace. Buy and sell webpages easily and securely.">
+  <meta name="keywords"
+    content="website marketplace, webpage marketplace, buy webpages, buy websites, sell webpages, sell websites, web assets">
+  <meta name="author" content="Aruba WebY">
+  <link rel="icon" href="img/y_transparent.png" type="image/x-icon">
+
+  <meta property="og:title" content="Buy your own website for your business!">
+  <meta property="og:description" content="Your Dream Website Awaits, WebY delivers! SimplY, Quickly, IntelligentlY">
+  <meta property="og:image" content="https://www.arubaweby.hu/img/social_banner.jpg">
+  <meta property="og:url" content="https://www.arubaweby.hu">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./tailwind.config.js"></script>
+  <script src="./myScript.js"></script>
+  <script src="./customize_product.js"></script>
+</head>
+
+<body>
+  <nav class="bg-gray-800 fixed top-0 w-full z-50">
+    <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="flex items-center px-2 lg:px-0">
+          <div class="flex-shrink-0">
+            <img class="h-12 w-auto pt-3 pb-3" src="img/weby_transparent_white_text_sitelogo.png" alt="WebY logo">
+          </div>
+          <div class="hidden lg:ml-6 lg:block">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <a href="index.html" 
+                class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Home</a>
+              <a href="buy_stuff.html"
+                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Buy</a>
+              <a href="seller_page.html"
+                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sell</a>
+              <a href="support.html"
+                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Support</a>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
+          <div class="w-full max-w-lg lg:max-w-xs">
+            <label for="search" class="sr-only">Search</label>
+            <div class="relative">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                    clip-rule="evenodd" />
+                </svg>
+              </div>
+              <input id="search" name="search"
+                class="px-4 block w-full rounded-md border-0 bg-gray-700 py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
+                placeholder="Search" type="search">
+            </div>
+          </div>
+        </div>
+        <div class="flex lg:hidden">
+          <!-- Mobile menu button -->
+          <button onclick="toggleVisibility_mobileMenu()" type="button"
+            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            aria-controls="mobile-menu" aria-expanded="false">
+            <span class="absolute -inset-0.5"></span>
+            <span class="sr-only">Open main menu</span>
+            <!--
+                      Icon when menu is closed.
+          
+                      Menu open: "hidden", Menu closed: "block"
+                    -->
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <!--
+                      Icon when menu is open.
+          
+                      Menu open: "block", Menu closed: "hidden"
+                    -->
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="hidden lg:ml-4 lg:block">
+          <div class="flex items-center">
+            
+
+            <!-- Profile dropdown Logged-in-->
+            <div id="profile_dropdown_button_login" class="hidden relative ml-4 flex-shrink-0">
+              <div>
+                <button onclick="toggleVisibility_profile()" type="button"
+                  class="relative flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                  <span class="absolute -inset-1.5"></span>
+                  <span class="sr-only">Open user menu</span>
+                  <img class="h-8 w-8 rounded-full"
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt="">
+                </button>
+              </div>
+
+              <!--
+                          Dropdown menu, show/hide based on menu state.
+            
+                          Entering: "transition ease-out duration-100"
+                            From: "transform opacity-0 scale-95"
+                            To: "transform opacity-100 scale-100"
+                          Leaving: "transition ease-in duration-75"
+                            From: "transform opacity-100 scale-100"
+                            To: "transform opacity-0 scale-95"
+                        -->
+              <div id="profile_dropdown"
+                class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                <!-- Active: "bg-gray-100", Not Active: "" -->
+                <a href="./profile.html" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                  id="user-menu-item-0">Your Profile</a>
+                <a onclick="logout()" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                  id="user-menu-item-2">Sign out</a>
+              </div>
+            </div>
+
+            <div id="profile_dropdown_button_NOlogin" class="hidden relative ml-4 flex-shrink-0">
+              <div>
+                <button onclick="toggleVisibility_profile()" type="button"
+                  class="relative flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                  <span class="absolute -inset-1.5"></span>
+                  <span class="sr-only">Open user menu</span>
+                  <img class="h-8 w-8 rounded-full" src="./img/sbcf-default-avatar.png" alt="">
+                </button>
+              </div>
+
+              <!--
+                        Dropdown menu, show/hide based on menu state.
+          
+                        Entering: "transition ease-out duration-100"
+                          From: "transform opacity-0 scale-95"
+                          To: "transform opacity-100 scale-100"
+                        Leaving: "transition ease-in duration-75"
+                          From: "transform opacity-100 scale-100"
+                          To: "transform opacity-0 scale-95"
+                      -->
+              <div id="profile_dropdown_NOlogin"
+                class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                <!-- Active: "bg-gray-100", Not Active: "" -->
+                <a href="./login.html" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                  id="user-menu-item-0">LogIn</a>
+                <a href="./registration.html" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                  tabindex="-1" id="user-menu-item-1">Register</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div id="mobile-menu" class=" bg-gray-800 w-full fixed z-50 hidden lg:hidden" id="mobile-menu">
+      <div class="space-y-1 px-2 pb-3 pt-2">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a href="./index.html" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">Home</a>
+        <a href="./buy_stuff.html"
+          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Buy</a>
+        <a href="./seller_page.html"
+          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sell</a>
+        <a href="./support.html"
+          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Support</a>
+      </div>
+      <div class="border-t border-gray-700 pb-3 pt-4">
+        
+        <div id="profile_dropdown_mobile" class="hidden">
+          <div class="flex items-center px-5">
+            <div class="flex-shrink-0">
+              <img class="h-10 w-10 rounded-full"
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt="">
+            </div>          
+          </div>
+          <div class="mt-3 space-y-1 px-2">
+            <a href="./profile.html"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your
+              Profile</a>
+            <a href="#" onclick="logout()"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
+          </div>
+        </div>
+        <div id="profile_dropdown_button_NOlogin_mobile" class="hidden">
+          <div class="flex items-center px-5">
+            <div class="flex-shrink-0">
+              <img class="h-10 w-10 rounded-full"
+                src="./img/sbcf-default-avatar.png"
+                alt="">
+            </div>          
+          </div>
+          <a href="./login.html"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">LogIn</a>
+          <a href="./registration.html" 
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Register</a>
+
+        </div>
+        
+      </div>
+    </div>
+  </nav>
+
+  <div class="flex">
+    <div id="CosumizeUi" class="flex-1 mt-40 pl-4">
+
+      <div class="flex flex-col mx-20 mx-4">
+        <button onclick="changeBackgroundColor_BusinessCasual()" type="button" class="my-4 rounded-md bg-gray-300 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-300"><p class="text-gray-800">Business Casual</p></button>
+        <button onclick="changeBackgroundColor_RainForrest()" type="button" class="my-4 rounded-md bg-green-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-900">Rain Forrest</button>
+        <button onclick="changeBackgroundColor_Sky()" type="button" class="my-4 rounded-md bg-blue-100 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-100-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-100"><p class="text-gray-800">Sky</p></button>
+      </div>
+
+      <div class="my-20 mb-80">
+        <div class="my-8">
+          <label for="title_modify" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
+          <div class="mt-2">
+            <input type="text" name="title" id="title_modify" placeholder="Data to enrich your online business"
+              class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              aria-describedby="email-description">
+          </div>
+        </div>
+
+        <div class="my-8">
+          <label for="text1-modify" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+          <div class="mt-2">
+            <input type="text" name="title" id="text1-modify"
+              placeholder="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua."
+              class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              aria-describedby="email-description">
+          </div>
+        </div>
+
+        <div class="my-8">
+          <label for="img1_modify" class="block text-sm font-medium leading-6 text-gray-900">Picture
+            <div class="mt-2">
+              <span
+                class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Upload
+                a file</span>
+              <input type="file" id="img1_modify" accept="image/*" class="sr-only">
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="mb-40 mt-80 pt-40">
+        <div class="my-8">
+          <label for="title2_modify" class="block text-sm font-medium leading-6 text-gray-900">Section Title</label>
+          <div class="mt-2">
+            <input type="text" placeholder="Stay on top of customer support" name="title" id="title2_modify"
+              class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              aria-describedby="email-description">
+          </div>
+        </div>
+        <div class="my-8">
+          <label for="text2_modify" class="block text-sm font-medium leading-6 text-gray-900">Section Description</label>
+          <div class="mt-2">
+            <input type="text"
+              placeholder="Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam."
+              name="title" id="text2_modify"
+              class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              aria-describedby="email-description">
+          </div>
+        </div>
+        <div class="my-8">
+          <label for="subtitle1_modify" class="block text-sm font-medium leading-6 text-gray-900">Section Subtitle 1</label>
+          <div class="mt-2">
+            <input type="text" placeholder="Unlimited inboxes" name="title" id="subtitle1_modify"
+              class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              aria-describedby="email-description">
+          </div>
+        </div>
+        <div class="my-8">
+          <label for="subtitle2_modify" class="block text-sm font-medium leading-6 text-gray-900">Section Subtitle 2</label>
+          <div class="mt-2">
+            <input type="text" placeholder="Manage team members" name="title" id="subtitle2_modify"
+              class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              aria-describedby="email-description">
+          </div>
+        </div>
+        <div class="my-8">
+          <label for="subtitle3_modify" class="block text-sm font-medium leading-6 text-gray-900">Section Subtitle 3</label>
+          <div class="mt-2">
+            <input type="text" placeholder="Spam report" name="title" id="subtitle3_modify"
+              class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              aria-describedby="email-description">
+          </div>
+        </div>
+        <div class="my-8">
+          <label for="text3_modify" class="block text-sm font-medium leading-6 text-gray-900">Section Description 1</label>
+          <div class="mt-2">
+            <input type="text"
+              placeholder="Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit nesciunt. Ex tempora quia. Sit nobis consequatur dolores incidunt."
+              name="title" id="text3_modify"
+              class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              aria-describedby="email-description">
+          </div>
+        </div>
+        <div class="my-8">
+          <label for="text4_modify" class="block text-sm font-medium leading-6 text-gray-900">Section Description 2</label>
+          <div class="mt-2">
+            <input type="text"
+              placeholder="Vero eum voluptatem aliquid nostrum voluptatem. Vitae esse natus. Earum nihil deserunt eos quasi cupiditate. A inventore et molestiae natus."
+              name="title" id="text4_modify"
+              class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              aria-describedby="email-description">
+          </div>
+        </div>
+
+        <div class="my-8">
+          <label for="text5_modify" class="block text-sm font-medium leading-6 text-gray-900">Section Description 3</label>
+          <div class="mt-2">
+            <input type="text"
+              placeholder="Vero eum voluptatem aliquid nostrum voluptatem. Vitae esse natus. Earum nihil deserunt eos quasi cupiditate. A inventore et molestiae natus.."
+              name="title" id="text5_modify"
+              class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              aria-describedby="email-description">
+          </div>
+        </div>
+      </div>
+      <div class="my-0">
+        <div>
+          <div class="my-8">
+            <label for="title3_modify" class="block text-sm font-medium leading-6 text-gray-900">Section Title 2</label>
+            <div class="mt-2">
+              <input type="text" placeholder="The right price for you, whoever you are" name="title" id="title3_modify"
+                class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                aria-describedby="email-description">
+            </div>
+          </div>
+        </div>
+        <div class="my-8">
+          <label for="text6_modify" class="block text-sm font-medium leading-6 text-gray-900">Section Description 2</label>
+          <div class="mt-2">
+            <input type="text"
+              placeholder="Qui iusto aut est earum eos quae. Eligendi est at nam aliquid ad quo reprehenderit in aliquid fugiat dolorum voluptatibus."
+              name="title" id="text6_modify"
+              class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              aria-describedby="email-description">
+          </div>
+        </div>
+
+
+        <div class="flex justify-between my-8">
+          <div class="flex-1 mx-4">
+            <div class="my-4">
+              <label for="tier1_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 1 Name</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder=Personal"
+                  name="title" id="tier1_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier1Price_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 1 Price</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder=$39"
+                  name="title" id="tier1Price_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier1Text_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 1 Description</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder="The perfect plan if you're just getting started with our product."
+                  name="title" id="tier1Text_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+    
+            <div class="my-4">
+              <label for="tier1Feature1_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 1 Feature 1</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder="25 products"
+                  name="title" id="tier1Feature1_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier1Feature2_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 1 Feature 2</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder="Up to 10,000 subscribers"
+                  name="title" id="tier1Feature2_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier1Feature3_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 1 Feature 3</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder="Audience segmentation"
+                  name="title" id="tier1Feature3_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier1Feature4_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 1 Feature 4</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder="Advanced analytics"
+                  name="title" id="tier1Feature4_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier1Feature5_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 1 Feature 5</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder="Email support"
+                  name="title" id="tier1Feature5_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier1Feature6_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 1 Feature 6</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder="Marketing automations"
+                  name="title" id="tier1Feature6_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+          </div>
+  
+          <div class="flex-1 mx-4">
+            <div class="my-4">
+              <label for="tier2_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 2 Name</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder=Personal"
+                  name="title" id="tier2_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier2Price_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 2 Price</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder=$99"
+                  name="title" id="tier2Price_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier2Text_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 2 Description</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder="A plan that scales with your rapidly growing business."
+                  name="title" id="tier2Text_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier2Feature1_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 2 Feature 1</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder="Priority support"
+                  name="title" id="tier2Feature1_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier2Feature2_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 2 Feature 2</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder="Single sign-on"
+                  name="title" id="tier2Feature2_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier2Feature3_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 2 Feature 3</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder="Enterprise integrations"
+                  name="title" id="tier2Feature3_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+            <div class="my-4">
+              <label for="tier2Feature4_modify" class="block text-sm font-medium leading-6 text-gray-900">Tier 2 Feature 4</label>
+              <div class="mt-2">
+                <input type="text"
+                  placeholder="Custom reporting tools"
+                  name="title" id="tier2Feature4_modify"
+                  class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  aria-describedby="email-description">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+
+
+
+    </div>
+    <div id="PagePreview" class="flex-1 mx-4 mt-16 border-2 border-gray-700">
+      <div id="section1Div" class="relative">
+        <div class="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
+          <div class="px-6 pb-24 pt-10 sm:pb-32 lg:col-span-7 lg:px-0 lg:pb-56 lg:pt-48 xl:col-span-6">
+            <div class="mx-auto max-w-2xl lg:mx-0">
+              <img class="h-11" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt="Your Company">
+              <h1 id="title" class="mt-24 text-4xl font-bold tracking-tight text-gray-900 sm:mt-10 sm:text-6xl">Data to
+                enrich your online business</h1>
+              <p id="text1" class="mt-6 text-lg leading-8 text-gray-600">Anim aute id magna aliqua ad ad non deserunt
+                sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+              <div class="mt-10 flex items-center gap-x-6">
+                <a href="#"
+                  class="changeBg rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
+                  started</a>
+              </div>
+            </div>
+          </div>
+          <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0">
+            <img id="img1Preview"
+              class="aspect-[3/2] w-full bg-gray-50 object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
+              src="https://images.unsplash.com/photo-1498758536662-35b82cd15e29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2102&q=80"
+              alt="">
+          </div>
+        </div>
+      </div>
+
+      <div id="section2Div" class="py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl lg:mx-0">
+            <h2 id="title2" class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Stay on top of customer
+              support</h2>
+            <p id="text2" class="mt-6 text-lg leading-8 text-gray-600">Lorem ipsum dolor sit amet consect adipisicing
+              elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.</p>
+          </div>
+          <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+            <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+              <div class="flex flex-col">
+                <dt class="text-base font-semibold leading-7 text-gray-900">
+                  <div class="changeBg mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                    <svg class="w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                      stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859m-19.5.338V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H6.911a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661z" />
+                    </svg>
+                  </div>
+                  <p id="subtitle1">Unlimited inboxes</p>
+                </dt>
+                <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                  <p id="text3" class="flex-auto">Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit
+                    nesciunt. Ex tempora quia. Sit nobis consequatur dolores incidunt.</p>
+                  <p class="mt-6">
+                    <a href="#" class="changeTxt text-sm font-semibold leading-6 text-indigo-600 ">Learn more <span
+                        aria-hidden="true">→</span></a>
+                  </p>
+                </dd>
+              </div>
+              <div class="flex flex-col">
+                <dt class="text-base font-semibold leading-7 text-gray-900">
+                  <div class="changeBg  mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                    <svg class="w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                      stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                    </svg>
+                  </div>
+                  <p id="subtitle2">Manage team members</p>
+                </dt>
+                <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                  <p id="text4" class="flex-auto">Vero eum voluptatem aliquid nostrum voluptatem. Vitae esse natus.
+                    Earum nihil deserunt eos quasi cupiditate. A inventore et molestiae natus.</p>
+                  <p class="mt-6">
+                    <a href="#" class="changeTxt text-sm font-semibold leading-6 text-indigo-600 ">Learn more <span
+                        aria-hidden="true">→</span></a>
+                  </p>
+                </dd>
+              </div>
+              <div class="flex flex-col">
+                <dt class="text-base font-semibold leading-7 text-gray-900">
+                  <div class="changeBg  mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                    <svg class="w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                      stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                    </svg>
+                  </div>
+                  <p id="subtitle3">Spam report</p>
+                </dt>
+                <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                  <p id="text5" class="flex-auto">Et quod quaerat dolorem quaerat architecto aliquam accusantium. Ex
+                    adipisci et doloremque autem quia quam. Quis eos molestiae at iure impedit.</p>
+                  <p class="mt-6">
+                    <a href="#" class="changeTxt text-sm font-semibold leading-6 text-indigo-600 ">Learn more <span
+                        aria-hidden="true">→</span></a>
+                  </p>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div id="section3Div" class="relative isolate px-6 py-24 sm:py-32 lg:px-8">
+        <div class="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl" aria-hidden="true">
+          <div class="mx-auto aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
+            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+          </div>
+        </div>
+        <div class="mx-auto max-w-2xl text-center lg:max-w-4xl">
+          <h2 class="changeTxt text-base font-semibold leading-7 text-indigo-600 ">Pricing</h2>
+          <p id="title3" class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">The right price for
+            you, whoever you are</p>
+        </div>
+        <p id="text6" class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">Qui iusto aut est earum
+          eos quae. Eligendi est at nam aliquid ad quo reprehenderit in aliquid fugiat dolorum voluptatibus.</p>
+        <div
+          class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
+          <div class="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 relative bg-white shadow-2xl">
+            <h3 id="tier1" class="changeTxt text-base font-semibold leading-7 text-indigo-600 ">Personal</h3>
+            <p class="mt-4 flex items-baseline gap-x-2">
+              <span id="tier1Price" class="text-5xl font-bold tracking-tight text-gray-900">$39</span>
+              <span class="text-base text-gray-500">/month</span>
+            </p>
+            <p id="tier1Text" class="mt-6 text-base leading-7 text-gray-600">The perfect plan if you&#039;re just getting started with
+              our product.</p>
+            <ul role="list" class="mt-8 space-y-3 text-sm leading-6 text-gray-600 sm:mt-10">
+              <li class="flex gap-x-3">
+                <svg class="changeTxt2 h-6 w-5 flex-none text-indigo-600 " viewBox="0 0 20 20" fill="currentColor"
+                  aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                    clip-rule="evenodd" />
+                </svg>
+                <p id="tier1Feature1">25 products</p>
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="changeTxt2 h-6 w-5 flex-none text-indigo-600 " viewBox="0 0 20 20" fill="currentColor"
+                  aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                    clip-rule="evenodd" />
+                </svg>
+                <p id="tier1Feature2">Up to 10,000 subscribers</p>
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="changeTxt2 h-6 w-5 flex-none text-indigo-600 " viewBox="0 0 20 20" fill="currentColor"
+                  aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                    clip-rule="evenodd" />
+                </svg>
+                <p id="tier1Feature3">Audience segmentation</p>
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="changeTxt2 h-6 w-5 flex-none text-indigo-600 " viewBox="0 0 20 20" fill="currentColor"
+                  aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                    clip-rule="evenodd" />
+                </svg>
+                <p id="tier1Feature4">Advanced analytics</p>
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="changeTxt2 h-6 w-5 flex-none text-indigo-600 " viewBox="0 0 20 20" fill="currentColor"
+                  aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                    clip-rule="evenodd" />
+                </svg>
+                <p id="tier1Feature5">Email support</p>
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="changeTxt2 h-6 w-5 flex-none text-indigo-600 " viewBox="0 0 20 20" fill="currentColor"
+                  aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                    clip-rule="evenodd" />
+                </svg>
+                <p id="tier1Feature6">Marketing automations</p>
+              </li>
+            </ul>
+            <a href="#" aria-describedby="tier-personal"
+              class="changeBg mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:mt-10 bg-indigo-600 text-white shadow ">Get
+              started today</a>
+          </div>
+          <div
+            class="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 bg-white/60 sm:mx-8 lg:mx-0 sm:rounded-t-none lg:rounded-tr-3xl lg:rounded-bl-none">
+            <h3 id="tier2" class="changeTxt text-base font-semibold leading-7 text-indigo-600 ">Team</h3>
+            <p class="mt-4 flex items-baseline gap-x-2">
+              <span id="tier2Price" class="text-5xl font-bold tracking-tight text-gray-900">$99</span>
+              <span class="text-base text-gray-500">/month</span>
+            </p>
+            <p id="tier2Text" class="mt-6 text-base leading-7 text-gray-600">A plan that scales with your rapidly growing business.</p>
+            <ul role="list" class="mt-8 space-y-3 text-sm leading-6 text-gray-600 sm:mt-10">
+              <li class="flex gap-x-3">
+                <svg class="changeTxt2 h-6 w-5 flex-none text-indigo-600 " viewBox="0 0 20 20" fill="currentColor"
+                  aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                    clip-rule="evenodd" />
+                </svg>
+                <p id="tier2Feature1">Priority support</p>
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="changeTxt2 h-6 w-5 flex-none text-indigo-600 " viewBox="0 0 20 20" fill="currentColor"
+                  aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                    clip-rule="evenodd" />
+                </svg>
+                <p id="tier2Feature2">Single sign-on</p>
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="changeTxt2 h-6 w-5 flex-none text-indigo-600 " viewBox="0 0 20 20" fill="currentColor"
+                  aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                    clip-rule="evenodd" />
+                </svg>
+                <p id="tier2Feature3">Enterprise integrations</p>
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="changeTxt2 h-6 w-5 flex-none text-indigo-600 " viewBox="0 0 20 20" fill="currentColor"
+                  aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                    clip-rule="evenodd" />
+                </svg>
+                <p id="tier2Feature4">Custom reporting tools</p>
+              </li>
+            </ul>
+            <a href="#" aria-describedby="tier-team"
+              class="changeBg bg-indigo-600 mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:mt-10 text-white ring-1 ring-inset ring-indigo-200 hover:ring-indigo-300 ">Get
+              started today</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

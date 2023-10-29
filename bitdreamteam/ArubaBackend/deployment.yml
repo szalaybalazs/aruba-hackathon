@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arubabackend
+  labels:
+    app: arubabackendpod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: arubabackendpod
+  template:
+    metadata:
+      labels:
+        app: arubabackendpod
+    spec:
+      containers:
+        - name: 8fed060569d9
+          image: gdezsenyi/aruba_frontend:latest
+          ports:
+            - containerPort: 80
