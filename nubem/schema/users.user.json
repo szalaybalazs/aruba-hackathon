@@ -1,0 +1,51 @@
+{
+    "collMod": "user",
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "title": "User Object Validation",
+        "required": [
+          "_id",
+          "firstname",
+          "lastname",
+          "username",
+          "email",
+          "password",
+          "role"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "string",
+            "description": "'ID' must be a exists"
+          },
+          "firstname": {
+            "bsonType": "string",
+            "description": "'First name' must be a string and its required"
+          },
+          "lastname": {
+            "bsonType": "string",
+            "description": "'Last name' must be a string and its required"
+          },
+          "username": {
+            "bsonType": "string",
+            "description": "'User name' must be a string and its required"
+          },
+          "email": {
+            "bsonType": "string",
+            "description": "'Email' is required"
+          },
+          "password": {
+            "bsonType": "string",
+            "description": "'Password' is required"
+          },
+          "role": {
+            "bsonType": "string",
+            "description": "'Role' is required"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "validationLevel": "strict",
+    "validationAction": "error"
+  }

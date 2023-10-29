@@ -1,0 +1,41 @@
+{
+    "collMod": "product",
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "title": "Product Object Validation",
+        "required": [
+          "_id",
+          "name",
+          "descript",
+          "price",
+          "imgs"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "string",
+            "description": "'ID' must be a exists"
+          },
+          "name": {
+            "bsonType": "string",
+            "description": "'Title' must be a string and its required"
+          },
+          "descript": {
+            "bsonType": "string",
+            "description": "'Description' must be a string and its required"
+          },
+          "price": {
+            "bsonType": "double",
+            "description": "'Price' must be a number and its required"
+          },
+          "imgs": {
+            "bsonType": "string",
+            "description": "'Image' must be string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "validationLevel": "strict",
+    "validationAction": "error"
+  }
