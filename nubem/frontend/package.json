@@ -15,7 +15,7 @@
     "@mui/icons-material": "5.14.15",
     "@mui/material": "5.14.15",
     "@types/react-router-dom": "5.3.3",
-    "axios": "1.5.1",
+    "axios": "1.6.0",
     "mobx": "6.10.2",
     "react": "18.2.0",
     "react-card-flip": "^1.2.2",
